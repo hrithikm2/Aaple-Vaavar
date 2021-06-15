@@ -8,7 +8,7 @@ class ViewMaps extends StatefulWidget {
 
 class _ViewMapsState extends State<ViewMaps> {
   Set<Marker> _marker = {};
-  GoogleMapController _controller;
+  late GoogleMapController controller;
   LatLng initialCameraPosition = LatLng(21.34996877816721, 79.0337336520624);
   @override
   void initState() {
@@ -43,7 +43,7 @@ class _ViewMapsState extends State<ViewMaps> {
         ));
   }
   void _onMapCreated(GoogleMapController controller) {
-    _controller = controller;
+    controller = controller;
   }
 
   void getMarker() {

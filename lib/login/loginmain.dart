@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:aaple_vaavar/auth/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:aaple_vaavar/login/login.dart';
 import 'package:aaple_vaavar/login/signup.dart';
@@ -29,9 +29,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
-
                     ),
-
                   ),
                   SizedBox(
                     height: 20,
@@ -41,12 +39,8 @@ class HomePage extends StatelessWidget {
               Container(
                 height: MediaQuery.of(context).size.height / 3,
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("res/logo.png")
-                    )
-                ),
+                    image: DecorationImage(image: AssetImage("res/logo.png"))),
               ),
-
               Column(
                 children: <Widget>[
                   // the login button
@@ -55,39 +49,41 @@ class HomePage extends StatelessWidget {
                     minWidth: double.infinity,
                     height: 60,
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                      Authentication.initializeFirebase(context: context);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
                     },
                     // defining the shape
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)
-                    ),
+                        borderRadius: BorderRadius.circular(50)),
                     child: Text(
                       "Login",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18
-                      ),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                     ),
                   ),
                   // creating the signup button
-                  SizedBox(height:20),
+
+                  SizedBox(height: 20),
                   MaterialButton(
                     minWidth: double.infinity,
                     height: 60,
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
+                    onPressed: () {
+                      Authentication.initializeFirebase(context: context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignupPage()));
                     },
                     color: Colors.orange,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)
-                    ),
+                        borderRadius: BorderRadius.circular(50)),
                     child: Text(
                       "Sign up",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
-                          fontSize: 18
-                      ),
+                          fontSize: 18),
                     ),
                   )
                 ],
